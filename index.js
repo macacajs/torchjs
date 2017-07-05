@@ -75,6 +75,7 @@ app.on('ready', () => {
     })
     win.webContents.once('did-finish-load', () => {
       if (opts.debug) {
+        win.show()
         win.webContents.openDevTools()
         win.webContents.on('devtools-opened', () => {
           // Debugger is not immediately ready!
@@ -103,9 +104,6 @@ app.on('ready', () => {
     ipcMain.on('mocha-error', (_, error) => fail(error))
 
     win.loadURL(indexUrl)
-    if (opts.debug) {
-      win.show()
-    }
   }
 })
 

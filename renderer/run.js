@@ -21,6 +21,21 @@ if (!opts.interactive) {
 // Expose mocha
 window.mocha = mocha
 
+function reportError ({
+  message,
+  stack
+}) {
+  if (opts.interactive) {
+    console.error(message)
+    console.error(stack)
+  } else {
+    ipcRenderer.send('mocha-error', {
+      message,
+      stack
+    })
+  }
+}
+
 try {
   each(opts.preload, script => {
     const tag = document.createElement('script')
@@ -29,7 +44,7 @@ try {
     document.head.appendChild(tag)
   })
 } catch (error) {
-  ipcRenderer.send('mocha-error', error)
+  reportError(error)
 }
 
 ipcRenderer.on('mocha-start', () => {
@@ -38,7 +53,7 @@ ipcRenderer.on('mocha-start', () => {
       ipcRenderer.send('mocha-done', ...args)
     })
   } catch (error) {
-    ipcRenderer.send('mocha-error', error)
+    reportError(error)
   }
 })
 
