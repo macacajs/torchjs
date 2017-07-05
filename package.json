@@ -4,7 +4,17 @@
   "description": "test framework to light up the world",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "test": "node bin/torch test/main && node bin/torch --renderer test/renderer",
+    "test-live": "node bin/torch --interactive test/renderer"
+  },
+  "pre-commit": {
+    "run": [
+      "lint",
+      "test"
+    ],
+    "silent": false
   },
   "repository": {
     "type": "git",
@@ -27,9 +37,12 @@
     "commander": "^2.9.0",
     "electron": "^1.6.10",
     "istanbul": "^0.4.5",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mocha": "^3.4.2",
+    "which": "^1.2.14"
   },
   "devDependencies": {
+    "pre-commit": "^1.2.2",
     "standard": "^10.0.2",
     "standard-version": "^4.0.0"
   }
