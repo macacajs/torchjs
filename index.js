@@ -1,8 +1,13 @@
 const getOptions = require('mocha/bin/options')
 const url = require('url')
 const {
+  assign,
   each
 } = require('lodash')
+const {
+  readFileSync,
+  writeFileSync
+} = require('fs')
 const {
   resolve
 } = require('path')
@@ -19,6 +24,25 @@ function fail (error) {
   console.error(error.message)
   console.error(error.stack)
   app.exit(1)
+}
+
+// configuration
+const configPath = resolve(app.getPath('userData'), './config.json')
+function restoreBounds (winOpts) {
+  let data
+  try {
+    data = JSON.parse(readFileSync(configPath, 'utf8'))
+  } catch (e) {
+    // do nothing
+  }
+  if (data && data.bounds) {
+    assign(winOpts, data.bounds)
+  }
+}
+function saveBounds (win) {
+  writeFileSync(configPath, JSON.stringify({
+    bounds: win.getBounds()
+  }))
 }
 
 // load mocha.opts into process.argv
@@ -68,16 +92,21 @@ app.on('ready', () => {
       fail(error)
     }
   } else {
-    let win = new BrowserWindow({
+    const winOpts = {
       focusable: opts.debug,
       height: opts.height,
       show: false,
+      width: opts.width,
       webPreferences: {
         webSecurity: false
-      },
-      width: opts.width
-    })
+      }
+    }
+    restoreBounds(winOpts)
+    let win = new BrowserWindow(winOpts)
 
+    win.on('close', () => {
+      saveBounds(win)
+    })
     win.on('closed', () => {
       win = null
     })
