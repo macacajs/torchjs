@@ -14,6 +14,12 @@ const {
 const parseArgs = require('./lib/parseArgs')
 const runMocha = require('./lib/runMocha')
 
+function fail (error) {
+  console.error(error.message)
+  console.error(error.stack)
+  app.exit(1)
+}
+
 // load mocha.opts into process.argv
 getOptions()
 
@@ -31,7 +37,6 @@ if (opts.requireMain.length) {
   }
 }
 
-// quit
 app.on('quit', () => { })
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -52,12 +57,6 @@ app.on('ready', () => {
       fail(error)
     }
   } else {
-    const indexUrl = url.format({
-      hash: encodeURIComponent(JSON.stringify(opts)),
-      pathname: resolve(__dirname, './renderer/index.html'),
-      protocol: 'file:',
-      slashes: true
-    })
     let win = new BrowserWindow({
       focusable: opts.debug,
       height: opts.height,
@@ -67,9 +66,7 @@ app.on('ready', () => {
       },
       width: opts.width
     })
-    if (!opts.debug && process.platform === 'darwin') {
-      app.dock.hide()
-    }
+
     win.on('closed', () => {
       win = null
     })
@@ -92,9 +89,7 @@ app.on('ready', () => {
         win.webContents.send('mocha-start')
       }
     })
-    // win.webContents.once('did-fail-load', (event, errorCode, errorDescription) => {
-    //   console.log(errorCode, errorDescription)
-    // })
+
     ipcMain.on('mocha-done', (event, count) => {
       win.webContents.once('destroyed', () => app.exit(count))
       if (!opts.interactive) {
@@ -103,12 +98,15 @@ app.on('ready', () => {
     })
     ipcMain.on('mocha-error', (_, error) => fail(error))
 
-    win.loadURL(indexUrl)
+    win.loadURL(url.format({
+      hash: encodeURIComponent(JSON.stringify(opts)),
+      pathname: resolve(__dirname, './renderer/index.html'),
+      protocol: 'file:',
+      slashes: true
+    }))
+
+    if (!opts.debug && process.platform === 'darwin') {
+      app.dock.hide()
+    }
   }
 })
-
-function fail (error) {
-  console.error(error.message)
-  console.error(error.stack)
-  app.exit(1)
-}
