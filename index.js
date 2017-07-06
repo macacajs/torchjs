@@ -11,6 +11,7 @@ const {
   app,
   ipcMain
 } = require('electron')
+const Coverage = require('./lib/Coverage')
 const parseArgs = require('./lib/parseArgs')
 const runMocha = require('./lib/runMocha')
 
@@ -25,6 +26,7 @@ getOptions()
 
 // opts
 const opts = parseArgs(process.argv)
+opts.root = process.cwd()
 
 // `--require-main` scripts
 if (opts.requireMain.length) {
@@ -51,8 +53,17 @@ app.on('ready', () => {
     opts.reporter = 'HTML'
   }
   if (!opts.renderer) {
+    let coverage
     try {
-      runMocha(opts, count => app.exit(count))
+      if (opts.coverage) {
+        coverage = new Coverage(opts.root, opts.coveragePattern)
+      }
+      runMocha(opts, count => {
+        if (coverage) {
+          coverage.report()
+        }
+        app.exit(count)
+      })
     } catch (error) {
       fail(error)
     }

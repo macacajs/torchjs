@@ -1,8 +1,12 @@
 {
   "name": "@lite-js/torch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "test framework to light up the world",
   "main": "index.js",
+  "bin": {
+    "torch-coverage": "./bin/coverage",
+    "torch": "./bin/torch"
+  },
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
@@ -36,6 +40,8 @@
   "dependencies": {
     "commander": "^2.9.0",
     "electron": "^1.6.10",
+    "glob": "^7.1.2",
+    "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
     "lodash": "^4.17.4",
     "mocha": "^3.4.2",

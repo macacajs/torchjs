@@ -6,6 +6,7 @@ const {
   ipcRenderer
 } = require('electron')
 const runMocha = require('../lib/runMocha')
+const Coverage = require('../lib/Coverage')
 
 let opts = {}
 
@@ -16,6 +17,11 @@ if (window.location.hash) {
 
 if (!opts.interactive) {
   require('./console')
+}
+
+let coverage
+if (opts.coverage) {
+  coverage = new Coverage(opts.root, opts.coveragePattern)
 }
 
 // Expose mocha
@@ -50,6 +56,9 @@ try {
 ipcRenderer.on('mocha-start', () => {
   try {
     runMocha(opts, (...args) => {
+      if (coverage) {
+        coverage.report()
+      }
       ipcRenderer.send('mocha-done', ...args)
     })
   } catch (error) {
