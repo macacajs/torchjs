@@ -4,8 +4,8 @@
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
-    "torch-coverage": "./bin/coverage",
-    "torch": "./bin/torch"
+    "torch-coverage": "./bin/coverage.js",
+    "torch": "./bin/torch.js"
   },
   "scripts": {
     "lint": "standard",
