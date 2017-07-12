@@ -21,7 +21,7 @@ function createWindow () {
 
   // win.webContents.openDevTools();
   win.on('close', () => {
-    windowBoundsConfig.set('covergae', win.getBounds())
+    windowBoundsConfig.set('coverage', win.getBounds())
   })
   win.on('closed', () => {
     win = null
