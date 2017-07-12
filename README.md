@@ -28,16 +28,36 @@ $ torch --renderer test/renderer
 $ torch --interative test/renderer
 ```
 
+> watching source files
+
+```shell
+$ torch --interactive --watch test/renderer
+```
+
 ### view code coverage
 
 ```shell
-$ torch --coverage [--coverage-pattern index.js,src/**/*.js] test/main && torch-coverage
+$ torch --coverage test/main && torch-coverage
 ```
 
 ### + overalls
 
 ```shell
-$ torch --coverage [--coverage-pattern index.js,src/**/*.js] test/main && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+$ torch --coverage test/main && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+```
+
+### specify source files (for watching / code coverage)
+
+> interactive mode
+
+```shell
+$ torch --interactive --watch --source-pattern src/**/*.js test/renderer
+```
+
+> code coverage
+
+```shell
+$ torch --coverage --source-pattern src/**/*.js test/main && torch-coverage
 ```
 
 ## options
@@ -64,9 +84,8 @@ $ torch --help
     -t, --timeout <ms>                      set test-case timeout in milliseconds [2000]
     -u, --ui <name>                         specify user-interface (bdd|tdd|exports)
     --check-leaks                           check for global variable leaks
-    --coverage                              report coverage
-    --coverage-pattern <sources>            pattern of source files to instrument
     --compilers <ext>:<module>,...          use the given module(s) to compile files
+    --coverage                              report coverage
     --debug                                 enable Electron debugger on port [5858]; for --renderer tests show window and dev-tools
     --debug-brk                             like --debug but pauses the script on the first line
     --globals <names>                       allow the given comma-delimited global [names]
@@ -75,10 +94,12 @@ $ torch --help
     --interfaces                            display available interfaces
     --no-timeouts                           disables timeouts
     --opts <path>                           specify opts path
+    --preload <name>                        preload the given script in renderer process
     --recursive                             include sub directories
     --renderer                              run tests in renderer process
-    --preload <name>                        preload the given script in renderer process
     --require-main <name>                   load the given script in main process before executing tests
+    --source-pattern <sources>              glob pattern of source files
+    --watch                                 watching source file changes
 ```
 
 ## trouble shooting

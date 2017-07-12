@@ -21,7 +21,7 @@ if (!opts.interactive) {
 
 let coverage
 if (opts.coverage) {
-  coverage = new Coverage(opts.root, opts.coveragePattern)
+  coverage = new Coverage(opts.root, opts.sourcePattern)
 }
 
 // Expose mocha

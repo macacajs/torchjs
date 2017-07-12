@@ -19,6 +19,7 @@ const {
 const Coverage = require('./lib/Coverage')
 const parseArgs = require('./lib/parseArgs')
 const runMocha = require('./lib/runMocha')
+const watcher = require('./lib/watcher')
 
 function fail (error) {
   console.error(error.message)
@@ -80,7 +81,7 @@ app.on('ready', () => {
     let coverage
     try {
       if (opts.coverage) {
-        coverage = new Coverage(opts.root, opts.coveragePattern)
+        coverage = new Coverage(opts.root, opts.sourcePattern)
       }
       runMocha(opts, count => {
         if (coverage) {
@@ -129,6 +130,12 @@ app.on('ready', () => {
         win.webContents.send('mocha-start')
       }
     })
+
+    if (opts.interactive && opts.watch) {
+      watcher(opts.sourcePattern, () => {
+        win.webContents.reloadIgnoringCache()
+      })
+    }
 
     ipcMain.on('mocha-done', (event, count) => {
       win.webContents.once('destroyed', () => app.exit(count))

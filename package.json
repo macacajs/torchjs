@@ -38,6 +38,7 @@
   },
   "homepage": "https://github.com/lite-js/torch#readme",
   "dependencies": {
+    "chokidar": "^1.7.0",
     "commander": "^2.9.0",
     "electron": "^1.6.10",
     "glob": "^7.1.2",
