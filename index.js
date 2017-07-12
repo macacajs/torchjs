@@ -5,10 +5,6 @@ const {
   each
 } = require('lodash')
 const {
-  readFileSync,
-  writeFileSync
-} = require('fs')
-const {
   resolve
 } = require('path')
 const {
@@ -20,30 +16,12 @@ const Coverage = require('./lib/Coverage')
 const parseArgs = require('./lib/parseArgs')
 const runMocha = require('./lib/runMocha')
 const watcher = require('./lib/watcher')
+const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
 
 function fail (error) {
   console.error(error.message)
   console.error(error.stack)
   app.exit(1)
-}
-
-// configuration
-const configPath = resolve(app.getPath('userData'), './config.json')
-function restoreBounds (winOpts) {
-  let data
-  try {
-    data = JSON.parse(readFileSync(configPath, 'utf8'))
-  } catch (e) {
-    // do nothing
-  }
-  if (data && data.bounds) {
-    assign(winOpts, data.bounds)
-  }
-}
-function saveBounds (win) {
-  writeFileSync(configPath, JSON.stringify({
-    bounds: win.getBounds()
-  }))
 }
 
 // load mocha.opts into process.argv
@@ -64,7 +42,6 @@ if (opts.requireMain.length) {
   }
 }
 
-app.on('quit', () => { })
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
@@ -102,11 +79,11 @@ app.on('ready', () => {
         webSecurity: false
       }
     }
-    restoreBounds(winOpts)
+    assign(winOpts, windowBoundsConfig.get('main'))
     let win = new BrowserWindow(winOpts)
 
     win.on('close', () => {
-      saveBounds(win)
+      windowBoundsConfig.set('main', win.getBounds())
     })
     win.on('closed', () => {
       win = null

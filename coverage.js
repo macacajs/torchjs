@@ -2,25 +2,27 @@ const {
   app,
   BrowserWindow
 } = require('electron')
-const path = require('path')
+const {
+  resolve
+} = require('path')
 const url = require('url')
+const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
 
 let win
 
 function createWindow () {
-  win = new BrowserWindow({
-    width: 1024,
-    height: 800
-  })
+  win = new BrowserWindow(windowBoundsConfig.get('coverage'))
 
   win.loadURL(url.format({
-    pathname: path.resolve(process.cwd(), './coverage/lcov-report/index.html'),
+    pathname: resolve(process.cwd(), './coverage/lcov-report/index.html'),
     protocol: 'file:',
     slashes: true
   }))
 
   // win.webContents.openDevTools();
-
+  win.on('close', () => {
+    windowBoundsConfig.set('covergae', win.getBounds())
+  })
   win.on('closed', () => {
     win = null
   })
@@ -34,10 +36,4 @@ app.on('window-all-closed', () => {
     app.quit()
   }
   app.exit(1)
-})
-
-app.on('activate', () => {
-  if (win === null) {
-    createWindow()
-  }
 })
