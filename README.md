@@ -1,4 +1,7 @@
-# torch
+torch
+=======
+
+[![npm version](https://badge.fury.io/js/%40lite-js%2Ftorch.svg)](https://badge.fury.io/js/%40lite-js%2Ftorch) [![Build Status](https://travis-ci.org/lite-js/torch.svg?branch=master)](https://travis-ci.org/lite-js/torch)
 
 Test framework to light up the world.
 
