@@ -2,13 +2,13 @@
 
 Test framework to light up the world.
 
-## installation
+## install
 
 ```shell
 $ npm install @lite-js/torch [-g]
 ```
 
-## usage
+## use
 
 ### main process
 
