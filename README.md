@@ -1,4 +1,4 @@
-# @lite-js/torch
+# torch
 
 Test framework to light up the world.
 
