@@ -2,7 +2,9 @@ const getOptions = require('mocha/bin/options')
 const url = require('url')
 const {
   assign,
-  each
+  debounce,
+  each,
+  union
 } = require('lodash')
 const {
   resolve
@@ -109,9 +111,13 @@ app.on('ready', () => {
     })
 
     if (opts.interactive && opts.watch) {
-      watcher(opts.sourcePattern, () => {
-        win.webContents.reloadIgnoringCache()
-      })
+      watcher(
+        union(opts.sourcePattern, opts.files),
+        debounce(() => {
+          console.log('executed')
+          win.webContents.reloadIgnoringCache()
+        }, opts.watchAggregateTimeout)
+      )
     }
 
     ipcMain.on('mocha-done', (event, count) => {
