@@ -17,7 +17,7 @@ const {
 const Coverage = require('./lib/Coverage')
 const parseArgs = require('./lib/parseArgs')
 const runMocha = require('./lib/runMocha')
-const watcher = require('./lib/watcher')
+const watch = require('./lib/watch')
 const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
 
 function fail (error) {
@@ -44,11 +44,13 @@ if (opts.requireMain.length) {
   }
 }
 
+let watcher
+
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
+  if (watcher) {
+    watcher.close()
   }
-  app.exit()
+  app.quit()
 })
 app.on('ready', () => {
   if (opts.interactive) {
@@ -111,10 +113,9 @@ app.on('ready', () => {
     })
 
     if (opts.interactive && opts.watch) {
-      watcher(
+      watcher = watch(
         union(opts.sourcePattern, opts.files),
         debounce(() => {
-          console.log('executed')
           win.webContents.reloadIgnoringCache()
         }, opts.watchAggregateTimeout)
       )
