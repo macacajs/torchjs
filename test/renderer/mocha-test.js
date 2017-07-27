@@ -1,9 +1,11 @@
 /* eslint-env mocha */
-const assert = require('assert')
-const mocha = require('mocha')
+import mocha from 'mocha'
+import {
+  strictEqual
+} from 'assert'
 
 describe('mocha', () => {
   it('is exposed as global', () => {
-    assert.strictEqual(window.mocha, mocha)
+    strictEqual(window.mocha, mocha)
   })
 })

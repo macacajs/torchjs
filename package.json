@@ -10,8 +10,8 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "node bin/torch test/main && node bin/torch --renderer test/renderer",
-    "test-live": "node bin/torch --interactive test/renderer"
+    "test": "node bin/torch test/main && node bin/torch --compiled --renderer test/renderer",
+    "test-live": "node bin/torch --compiled --interactive test/renderer"
   },
   "pre-commit": {
     "run": [
@@ -38,9 +38,11 @@
   },
   "homepage": "https://github.com/lite-js/torch#readme",
   "dependencies": {
+    "babel-register": "^6.24.1",
     "chokidar": "^1.7.0",
     "commander": "^2.9.0",
     "electron": "~1.6.11",
+    "electron-compile": "^6.4.1",
     "glob": "^7.1.2",
     "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
@@ -49,6 +51,10 @@
     "which": "^1.2.14"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-preset-react": "^6.24.1",
+    "electron-compilers": "^5.9.0",
     "pre-commit": "^1.2.2",
     "standard": "^10.0.2"
   }

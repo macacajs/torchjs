@@ -33,6 +33,10 @@ getOptions()
 const opts = parseArgs(process.argv)
 opts.root = process.cwd()
 
+if (opts.compiled) {
+  require('./lib/requireHook')(opts)
+}
+
 // `--require-main` scripts
 if (opts.requireMain.length) {
   try {

@@ -1,19 +1,21 @@
 /* eslint-env mocha */
-const assert = require('assert')
-const {
+import {
+  equal
+} from 'assert'
+import {
   remote
-} = require('electron')
+} from 'electron'
 
 describe('mocha.opts', () => {
   it('--require modules are loaded', () => {
-    assert.equal(true, window.required)
+    equal(true, window.required)
   })
 
   it('--preload scripts are loaded', () => {
-    assert.equal(true, window.preloaded)
+    equal(true, window.preloaded)
   })
 
   it('--require-main modules are loaded in the main process', () => {
-    assert.equal(true, remote.getGlobal('requiredMain'))
+    equal(true, remote.getGlobal('requiredMain'))
   })
 })

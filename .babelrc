@@ -1,0 +1,6 @@
+{
+  "ignore": false,
+  "presets": [
+    "es2016-node5"
+  ]
+}
