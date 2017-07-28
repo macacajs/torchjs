@@ -87,6 +87,8 @@ $ torch --help
     -t, --timeout <ms>                      set test-case timeout in milliseconds [2000]
     -u, --ui <name>                         specify user-interface (bdd|tdd|exports)
     --check-leaks                           check for global variable leaks
+    --compile                               compile with babel
+    --compile-opts <path>                   path of compile options
     --compilers <ext>:<module>,...          use the given module(s) to compile files
     --coverage                              report coverage
     --debug                                 enable Electron debugger on port [5858]; for --renderer tests show window and dev-tools
@@ -103,6 +105,35 @@ $ torch --help
     --require-main <name>                   load the given script in main process before executing tests
     --source-pattern <sources>              glob pattern of source files
     --watch                                 watching source file changes
+    --watch-aggregate-timeout               delay time for re-run test cases after files changed
+```
+
+### --compile-opts <path>
+
+> experimental
+
+specify a js file providing compile options. default path is `${process.cwd()}/.torch.compile.opts.js`
+
+```javascript
+module.exports = {
+  babelrc: { // babelrc
+    presets: [
+      'es2015',
+      'stage-0'
+    ],
+    sourceMaps: 'inline'
+  },
+  extensions: ['.es6', '.es', '.jsx', '.js'],
+  include: [ // glob expressions to detect files to include
+    'index.js',
+    'lib/**/*.js',
+    'src/**/*.js'
+  ],
+  exclude: [ // glob expressions to detect files to exclude
+    'bower_components/**',
+    'node_modules/**'
+  ]
+}
 ```
 
 ## trouble shooting

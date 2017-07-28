@@ -19,10 +19,6 @@ if (!opts.interactive) {
   require('./console')
 }
 
-if (opts.compiled) {
-  require('../lib/requireHook')(opts)
-}
-
 let coverage
 if (opts.coverage) {
   coverage = new Coverage(opts.root, opts.sourcePattern)
@@ -44,6 +40,11 @@ function reportError ({
       stack
     })
   }
+}
+
+// TODO compile
+if (opts.compile) {
+  require('../lib/requireHook')(opts.compileOpts)
 }
 
 try {

@@ -33,10 +33,6 @@ getOptions()
 const opts = parseArgs(process.argv)
 opts.root = process.cwd()
 
-if (opts.compiled) {
-  require('./lib/requireHook')(opts)
-}
-
 // `--require-main` scripts
 if (opts.requireMain.length) {
   try {
@@ -67,6 +63,10 @@ app.on('ready', () => {
     try {
       if (opts.coverage) {
         coverage = new Coverage(opts.root, opts.sourcePattern)
+      }
+      // TODO compile
+      if (opts.compile) {
+        require('./lib/requireHook')(opts.compileOpts)
       }
       runMocha(opts, count => {
         if (coverage) {
