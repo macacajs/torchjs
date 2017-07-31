@@ -15,6 +15,7 @@ const {
   ipcMain
 } = require('electron')
 const Coverage = require('./lib/Coverage')
+const notify = require('./lib/notify')
 const parseArgs = require('./lib/parseArgs')
 const runMocha = require('./lib/runMocha')
 const watch = require('./lib/watch')
@@ -71,6 +72,9 @@ app.on('ready', () => {
       runMocha(opts, count => {
         if (coverage) {
           coverage.report()
+        }
+        if (count && opts.notifyOnFail) {
+          notify(count)
         }
         app.exit(count)
       })

@@ -5,8 +5,9 @@ const {
 const {
   ipcRenderer
 } = require('electron')
-const runMocha = require('../lib/runMocha')
 const Coverage = require('../lib/Coverage')
+const notify = require('../lib/notify')
+const runMocha = require('../lib/runMocha')
 
 let opts = {}
 
@@ -60,11 +61,14 @@ try {
 
 ipcRenderer.on('mocha-start', () => {
   try {
-    runMocha(opts, (...args) => {
+    runMocha(opts, count => {
+      if (count && opts.notifyOnFail) {
+        notify(count)
+      }
       if (coverage) {
         coverage.report()
       }
-      ipcRenderer.send('mocha-done', ...args)
+      ipcRenderer.send('mocha-done', count)
     })
   } catch (error) {
     reportError(error)

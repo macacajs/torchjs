@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "node bin/torch test/main && node bin/torch --compile --renderer test/renderer",
+    "test": "node bin/torch test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
     "test-live": "node bin/torch --compile --interactive test/renderer"
   },
   "pre-commit": {
@@ -49,6 +49,7 @@
     "lodash": "^4.17.4",
     "minimatch": "^3.0.4",
     "mocha": "^3.4.2",
+    "node-notifier": "^5.1.2",
     "source-map-support": "^0.4.15",
     "which": "^1.2.14"
   },
