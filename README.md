@@ -98,6 +98,7 @@ $ torch --help
     --interactive                           run tests in renderer process in a visible window that can be reloaded to re-run tests
     --interfaces                            display available interfaces
     --no-timeouts                           disables timeouts
+    --notify-on-fail                        notify on failures
     --opts <path>                           specify opts path
     --preload <name>                        preload the given script in renderer process
     --recursive                             include sub directories
