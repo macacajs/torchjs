@@ -58,3 +58,7 @@ typings/
 .env
 
 package-lock.json
+
+# vim
+*.sw*
+*.un~
