@@ -1,13 +1,14 @@
-torch
-=======
+# torch
 
 [![npm version](https://badge.fury.io/js/%40lite-js%2Ftorch.svg)](https://badge.fury.io/js/%40lite-js%2Ftorch) [![Build Status](https://travis-ci.org/lite-js/torch.svg?branch=master)](https://travis-ci.org/lite-js/torch)
+
+---
 
 Test framework to light up the world.
 
 ## install
 
-```shell
+``` bash
 $ npm install @lite-js/torch [-g]
 ```
 
@@ -15,37 +16,37 @@ $ npm install @lite-js/torch [-g]
 
 ### main process
 
-```shell
+``` bash
 $ torch test/main
 ```
 
 ### renderer process
 
-```shell
+``` bash
 $ torch --renderer test/renderer
 ```
 
 ### interactive mode (you can re-run tests by CMD+R)
 
-```shell
+``` bash
 $ torch --interative test/renderer
 ```
 
 > watching source files
 
-```shell
+``` bash
 $ torch --interactive --watch test/renderer
 ```
 
 ### view code coverage
 
-```shell
+``` bash
 $ torch --coverage test/main && torch-coverage
 ```
 
 ### + overalls
 
-```shell
+``` bash
 $ torch --coverage test/main && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 ```
 
@@ -53,19 +54,19 @@ $ torch --coverage test/main && cat ./coverage/lcov.info | ./node_modules/covera
 
 > interactive mode
 
-```shell
+``` bash
 $ torch --interactive --watch --source-pattern src/**/*.js test/renderer
 ```
 
 > code coverage
 
-```shell
+``` bash
 $ torch --coverage --source-pattern src/**/*.js test/main && torch-coverage
 ```
 
 ## options
 
-```shell
+``` bash
 $ torch --help
 
   Usage: torch [options]
@@ -143,7 +144,7 @@ module.exports = {
 
 Your .travis.yml will need two extra lines of configuration to run this headless on Travis:
 
-```yaml
+``` yaml
 before_script:
   - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
 ```
