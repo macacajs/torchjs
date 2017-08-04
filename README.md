@@ -13,27 +13,27 @@
 
 Test framework to light up the world.
 
-## install
+## Installation
 
 ``` bash
 $ npm install @lite-js/torch [-g]
 ```
 
-## use
+## Usage
 
-### main process
+### Main process
 
 ``` bash
 $ torch test/main
 ```
 
-### renderer process
+### Renderer process
 
 ``` bash
 $ torch --renderer test/renderer
 ```
 
-### interactive mode (you can re-run tests by CMD+R)
+### Interactive mode (you can re-run tests by CMD+R)
 
 ``` bash
 $ torch --interative test/renderer
@@ -45,13 +45,13 @@ $ torch --interative test/renderer
 $ torch --interactive --watch test/renderer
 ```
 
-### view code coverage
+### View code coverage
 
 ``` bash
 $ torch --coverage test/main && torch-coverage
 ```
 
-### + overalls
+### + Overalls
 
 ``` bash
 $ torch --coverage test/main && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
@@ -71,7 +71,7 @@ $ torch --interactive --watch --source-pattern src/**/*.js test/renderer
 $ torch --coverage --source-pattern src/**/*.js test/main && torch-coverage
 ```
 
-## options
+## Options
 
 ``` bash
 $ torch --help
@@ -145,9 +145,9 @@ module.exports = {
 }
 ```
 
-## trouble shooting
+## Trouble Shooting
 
-### using on Travis
+### Using on Travis
 
 Your .travis.yml will need two extra lines of configuration to run this headless on Travis:
 
@@ -156,6 +156,10 @@ before_script:
   - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
 ```
 
-## thanks to
+## Thanks to
 
 The original idea and most of the code are stolen from [electron-mocha](https://github.com/jprichardson/electron-mocha), actually you can say that `torch` is created by adding features onto `electron-mocha`.
+
+## License
+
+The MIT License (MIT)
