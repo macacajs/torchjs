@@ -1,3 +1,5 @@
+const path = require('path')
+
 const mocha = require('mocha')
 const {
   each
@@ -49,11 +51,26 @@ if (opts.compile) {
 }
 
 try {
-  each(opts.preload, script => {
-    const tag = document.createElement('script')
-    tag.src = script
-    tag.async = false
-    document.head.appendChild(tag)
+  each(opts.preload, file => {
+    console.log(file)
+    const fileType = path.extname(file)
+    console.log(fileType)
+    switch (fileType) {
+      case '.js': {
+        const tag = document.createElement('script')
+        tag.src = file
+        tag.async = false
+        document.head.appendChild(tag)
+        break
+      }
+      case '.css': {
+        const tag = document.createElement('link')
+        tag.rel = 'stylesheet'
+        tag.href = file
+        document.head.appendChild(tag)
+        break
+      }
+    }
   })
 } catch (error) {
   reportError(error)
