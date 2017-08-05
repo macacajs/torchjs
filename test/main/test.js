@@ -3,6 +3,7 @@ const {
   resolve
 } = require('path')
 const assert = require('assert')
+
 const Coverage = require('../../lib/Coverage')
 
 describe('torch', () => {
