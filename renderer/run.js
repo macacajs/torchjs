@@ -52,15 +52,14 @@ if (opts.compile) {
 
 try {
   each(opts.preload, file => {
-    console.log(file)
     const fileType = path.extname(file)
-    console.log(fileType)
     switch (fileType) {
       case '.js': {
         const tag = document.createElement('script')
         tag.src = file
         tag.async = false
         document.head.appendChild(tag)
+        console.log(`${file} loaded success!`)
         break
       }
       case '.css': {
@@ -68,6 +67,7 @@ try {
         tag.rel = 'stylesheet'
         tag.href = file
         document.head.appendChild(tag)
+        console.log(`${file} loaded success!`)
         break
       }
     }
