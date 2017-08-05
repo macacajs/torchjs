@@ -107,6 +107,7 @@ $ torch --help
     --interfaces                            display available interfaces
     --no-timeouts                           disables timeouts
     --notify-on-fail                        notify on failures
+    --notify-on-success                     notify on success
     --opts <path>                           specify opts path
     --preload <name>                        preload the given script in renderer process
     --recursive                             include sub directories
@@ -123,7 +124,7 @@ $ torch --help
 
 specify a js file providing compile options. default path is `${process.cwd()}/.torch.compile.opts.js`
 
-```javascript
+``` javascript
 module.exports = {
   babelrc: { // babelrc
     presets: [
@@ -158,7 +159,7 @@ before_script:
 
 ## Thanks to
 
-The original idea and most of the code are stolen from [electron-mocha](https://github.com/jprichardson/electron-mocha), actually you can say that `torch` is created by adding features onto `electron-mocha`.
+The original idea and most of the code are stolen from [electron-mocha](//github.com/jprichardson/electron-mocha), actually you can say that `torch` is created by adding features onto `electron-mocha`.
 
 ## License
 

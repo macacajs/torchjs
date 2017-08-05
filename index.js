@@ -14,11 +14,11 @@ const {
   app,
   ipcMain
 } = require('electron')
-const Coverage = require('./lib/Coverage')
-const notify = require('./lib/notify')
-const parseArgs = require('./lib/parseArgs')
-const runMocha = require('./lib/runMocha')
 const watch = require('./lib/watch')
+const notify = require('./lib/notify')
+const runMocha = require('./lib/runMocha')
+const Coverage = require('./lib/Coverage')
+const parseArgs = require('./lib/parseArgs')
 const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
 
 function fail (error) {
@@ -74,6 +74,9 @@ app.on('ready', () => {
           coverage.report()
         }
         if (count && opts.notifyOnFail) {
+          notify(count)
+        }
+        if (count && opts.notifyOnSuccess) {
           notify(count)
         }
         app.exit(count)
