@@ -5,7 +5,7 @@ const {
   debounce,
   each,
   union
-} = require('lodash')
+} = require('macaca-utils')
 const {
   resolve
 } = require('path')

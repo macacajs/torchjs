@@ -3,7 +3,7 @@ const {
   map,
   toArray,
   toString
-} = require('lodash')
+} = require('macaca-utils')
 const {
   remote
 } = require('electron')
