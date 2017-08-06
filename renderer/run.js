@@ -1,12 +1,17 @@
-const path = require('path')
+const {
+  extname,
+  resolve,
+  dirname
+} = require('path')
 
 const mocha = require('mocha')
 const {
   writeFileSync
 } = require('fs')
 const {
-  each
-} = require('lodash')
+  each,
+  mkdir
+} = require('macaca-utils')
 const {
   ipcRenderer
 } = require('electron')
@@ -55,7 +60,7 @@ if (opts.compile) {
 
 try {
   each(opts.preload, file => {
-    const fileType = path.extname(file)
+    const fileType = extname(file)
     switch (fileType) {
       case '.js': {
         const tag = document.createElement('script')
@@ -116,7 +121,8 @@ ipcRenderer.on('screenshot-end', (e, data) => {
 
   if (target) {
     if (target.options && target.options.directory) {
-      var directory = path.resolve(target.options.directory)
+      var directory = resolve(target.options.directory)
+      mkdir(dirname(directory))
       console.log(`screenshot was saved to ${directory}`)
       writeFileSync(directory, data.base64, 'base64')
     }

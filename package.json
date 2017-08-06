@@ -46,7 +46,7 @@
     "glob": "^7.1.2",
     "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
-    "lodash": "^4.17.4",
+    "macaca-utils": "^1.0.0",
     "minimatch": "^3.0.4",
     "mocha": "^3.4.2",
     "node-notifier": "^5.1.2",
