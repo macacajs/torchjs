@@ -2,13 +2,16 @@ const path = require('path')
 
 const mocha = require('mocha')
 const {
+  writeFileSync
+} = require('fs')
+const {
   each
 } = require('lodash')
 const {
   ipcRenderer
 } = require('electron')
-const Coverage = require('../lib/Coverage')
 const notify = require('../lib/notify')
+const Coverage = require('../lib/Coverage')
 const runMocha = require('../lib/runMocha')
 
 let opts = {}
@@ -94,3 +97,33 @@ ipcRenderer.on('mocha-start', () => {
 
 // Request re-run on reload in --interactive mode
 ipcRenderer.send('mocha-ready-to-run')
+
+// Expose Macaca inject utils
+var queue = []
+
+window.Macaca = {
+  screenshot: (options, callback) => {
+    queue.push({
+      options,
+      callback
+    })
+    ipcRenderer.send('screenshot-start')
+  }
+}
+
+ipcRenderer.on('screenshot-end', (e, data) => {
+  var target = queue.shift()
+
+  if (target) {
+    if (target.options && target.options.directory) {
+      var directory = path.resolve(target.options.directory)
+      console.log(`screenshot was saved to ${directory}`)
+      writeFileSync(directory, data.base64, 'base64')
+    }
+
+    target.callback({
+      action: 'screenshot',
+      data
+    })
+  }
+})
