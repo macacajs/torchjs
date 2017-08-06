@@ -140,6 +140,15 @@ app.on('ready', () => {
     })
     ipcMain.on('mocha-error', (_, error) => fail(error))
 
+    ipcMain.on('screenshot-start', () => {
+      win.capturePage((image) => {
+        let base64 = image.toPng().toString('base64')
+        win.webContents.send('screenshot-end', {
+          base64
+        })
+      })
+    })
+
     win.loadURL(url.format({
       hash: encodeURIComponent(JSON.stringify(opts)),
       pathname: resolve(__dirname, './renderer/index.html'),
