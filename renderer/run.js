@@ -112,7 +112,7 @@ window.Macaca = {
       options,
       callback
     })
-    ipcRenderer.send('screenshot-start')
+    ipcRenderer.send('screenshot-start', options)
   }
 }
 
