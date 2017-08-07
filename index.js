@@ -140,13 +140,29 @@ app.on('ready', () => {
     })
     ipcMain.on('mocha-error', (_, error) => fail(error))
 
-    ipcMain.on('screenshot-start', () => {
-      win.capturePage((image) => {
-        let base64 = image.toPng().toString('base64')
-        win.webContents.send('screenshot-end', {
-          base64
+    ipcMain.on('screenshot-start', (event, options) => {
+
+      if (options.width && options.height) {
+        config = {
+          x: 0,
+          y: 0,
+          width: options.width,
+          height: options.height
+        }
+        win.capturePage(config, image => {
+          let base64 = image.toPng().toString('base64')
+          win.webContents.send('screenshot-end', {
+            base64
+          })
         })
-      })
+      } else {
+        win.capturePage(image => {
+          let base64 = image.toPng().toString('base64')
+          win.webContents.send('screenshot-end', {
+            base64
+          })
+        })
+      }
     })
 
     win.loadURL(url.format({
