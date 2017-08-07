@@ -143,7 +143,7 @@ app.on('ready', () => {
     ipcMain.on('screenshot-start', (event, options) => {
 
       if (options.width && options.height) {
-        config = {
+        let config = {
           x: options.x || 0,
           y: options.y || 0,
           width: options.width,
