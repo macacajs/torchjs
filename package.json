@@ -1,6 +1,6 @@
 {
   "name": "torcher",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
