@@ -1,4 +1,4 @@
-# torch
+# torcher
 
 [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] [![npm download][download-image]][download-url]
 
@@ -16,7 +16,7 @@ Test framework to light up the world.
 ## Installation
 
 ``` bash
-$ npm install @lite-js/torch [-g]
+$ npm install torcher [-g]
 ```
 
 ## Usage
