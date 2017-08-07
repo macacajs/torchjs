@@ -1,18 +1,17 @@
 {
-  "name": "torcher",
+  "name": "torchjs",
   "version": "0.2.5",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
     "torch-coverage": "./bin/coverage.js",
-    "torcher": "./bin/torcher.js",
-    "torch": "./bin/torcher.js"
+    "torch": "./bin/torch.js"
   },
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "node bin/torcher test/main && node bin/torcher --compile --renderer --notify-on-fail test/renderer",
-    "test-live": "node bin/torcher --compile --interactive test/renderer"
+    "test": "node bin/torch test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
+    "test-live": "node bin/torch --compile --interactive test/renderer"
   },
   "pre-commit": {
     "run": [
@@ -23,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/macacajs/torcher.git"
+    "url": "git+https://github.com/macacajs/torchjs.git"
   },
   "keywords": [
     "torch",
@@ -35,9 +34,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/macacajs/torcher/issues"
+    "url": "https://github.com/macacajs/torchjs/issues"
   },
-  "homepage": "https://github.com/macacajs/torcher#readme",
+  "homepage": "https://github.com/macacajs/torchjs#readme",
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-register": "^6.24.1",
