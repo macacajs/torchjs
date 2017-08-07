@@ -144,8 +144,8 @@ app.on('ready', () => {
 
       if (options.width && options.height) {
         config = {
-          x: 0,
-          y: 0,
+          x: options.x || 0,
+          y: options.y || 0,
           width: options.width,
           height: options.height
         }
