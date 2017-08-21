@@ -7,13 +7,20 @@ const {
   union
 } = require('macaca-utils')
 const {
-  resolve
+  resolve,
+  join,
+  extname
 } = require('path')
+const {
+  readFileSync,
+  writeFileSync
+} = require('fs')
 const {
   BrowserWindow,
   app,
   ipcMain
 } = require('electron')
+const Render = require('microtemplate').render
 const watch = require('./lib/watch')
 const notify = require('./lib/notify')
 const runMocha = require('./lib/runMocha')
@@ -108,10 +115,7 @@ app.on('ready', () => {
         win.show()
         win.webContents.openDevTools()
         win.webContents.on('devtools-opened', () => {
-          // Debugger is not immediately ready!
-          setTimeout(() => {
-            win.webContents.send('mocha-start')
-          }, 250)
+          win.webContents.send('mocha-start')
         })
 
         // Called on reload in --interactive mode
@@ -141,7 +145,6 @@ app.on('ready', () => {
     ipcMain.on('mocha-error', (_, error) => fail(error))
 
     ipcMain.on('screenshot-start', (event, options) => {
-
       if (options.width && options.height) {
         let config = {
           x: options.x || 0,
@@ -165,9 +168,35 @@ app.on('ready', () => {
       }
     })
 
+    const templatefile = join(__dirname, 'renderer', 'template.html')
+    const distfile = join(__dirname, 'renderer', 'index.html')
+
+    const getInjectContent = list => {
+      let html = ''
+      list.forEach(item => {
+        const ext = extname(item)
+
+        switch (ext) {
+          case '.js':
+            html += `<script src="${item}"></script>`
+            break
+          case '.css':
+            html += `<link rel="stylesheet" href="${item}"/>`
+            break
+        }
+      })
+      return html
+    }
+    const output = Render(readFileSync(templatefile, 'utf8'), {
+      preload: getInjectContent(opts.preload)
+    }, {
+      tagOpen: '<!--',
+      tagClose: '-->'
+    })
+    writeFileSync(distfile, output, 'utf8')
     win.loadURL(url.format({
       hash: encodeURIComponent(JSON.stringify(opts)),
-      pathname: resolve(__dirname, './renderer/index.html'),
+      pathname: distfile,
       protocol: 'file:',
       slashes: true
     }))

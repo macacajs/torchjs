@@ -1,15 +1,12 @@
 const {
-  extname,
   resolve,
   dirname
 } = require('path')
-
 const mocha = require('mocha')
 const {
   writeFileSync
 } = require('fs')
 const {
-  each,
   mkdir
 } = require('macaca-utils')
 const {
@@ -56,32 +53,6 @@ function reportError ({
 // TODO compile
 if (opts.compile) {
   require('../lib/requireHook')(opts.compileOpts)
-}
-
-try {
-  each(opts.preload, file => {
-    const fileType = extname(file)
-    switch (fileType) {
-      case '.js': {
-        const tag = document.createElement('script')
-        tag.src = file
-        tag.async = false
-        document.head.appendChild(tag)
-        console.log(`${file} loaded success!`)
-        break
-      }
-      case '.css': {
-        const tag = document.createElement('link')
-        tag.rel = 'stylesheet'
-        tag.href = file
-        document.head.appendChild(tag)
-        console.log(`${file} loaded success!`)
-        break
-      }
-    }
-  })
-} catch (error) {
-  reportError(error)
 }
 
 ipcRenderer.on('mocha-start', () => {
