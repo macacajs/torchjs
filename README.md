@@ -16,7 +16,7 @@ Test framework to light up the world.
 ## Installation
 
 ``` bash
-$ npm install torchjs [-g]
+$ npm install torchjs -g
 ```
 
 ## Usage
