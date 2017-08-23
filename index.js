@@ -9,7 +9,8 @@ const {
 const {
   resolve,
   join,
-  extname
+  extname,
+  dirname
 } = require('path')
 const {
   readFileSync,
@@ -21,12 +22,15 @@ const {
   ipcMain
 } = require('electron')
 const Render = require('microtemplate').render
+const defaultReporter = 'macaca-reporter'
+const macacaReporter = require.resolve(defaultReporter)
 const watch = require('./lib/watch')
 const notify = require('./lib/notify')
 const runMocha = require('./lib/runMocha')
 const Coverage = require('./lib/Coverage')
 const parseArgs = require('./lib/parseArgs')
 const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
+const macacaReporterDir = dirname(macacaReporter)
 
 function fail (error) {
   console.error(error.message)
@@ -64,7 +68,7 @@ app.on('ready', () => {
   if (opts.interactive) {
     opts.renderer = true
     opts.debug = true
-    opts.reporter = 'HTML'
+    opts.reporter = 'macaca-reporter'
   }
   if (!opts.renderer) {
     let coverage
@@ -188,6 +192,8 @@ app.on('ready', () => {
       return html
     }
     const output = Render(readFileSync(templatefile, 'utf8'), {
+      injectcss: `<link rel="stylesheet" href="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.css`)}"/>`,
+      injectjs: `<script src="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.js`)}"></script>`,
       preload: getInjectContent(opts.preload)
     }, {
       tagOpen: '<!--',
