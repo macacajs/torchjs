@@ -46,6 +46,7 @@
     "glob": "^7.1.2",
     "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
+    "macaca-reporter": "^1.0.1",
     "macaca-utils": "^1.0.0",
     "microtemplate": "^1.0.2",
     "minimatch": "^3.0.4",

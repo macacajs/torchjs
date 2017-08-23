@@ -64,7 +64,7 @@ app.on('ready', () => {
   if (opts.interactive) {
     opts.renderer = true
     opts.debug = true
-    opts.reporter = 'HTML'
+    opts.reporter = 'macaca-reporter'
   }
   if (!opts.renderer) {
     let coverage
