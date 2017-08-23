@@ -192,8 +192,8 @@ app.on('ready', () => {
       return html
     }
     const output = Render(readFileSync(templatefile, 'utf8'), {
-      injectcss: join(macacaReporterDir, '..', `${defaultReporter}.css`),
-      injectjs: join(macacaReporterDir, '..', `${defaultReporter}.js`),
+      injectcss: `<link rel="stylesheet" href="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.css`)}"/>`,
+      injectjs: `<script src="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.js`)}"></script>`,
       preload: getInjectContent(opts.preload)
     }, {
       tagOpen: '<!--',
