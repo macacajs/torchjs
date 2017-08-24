@@ -64,3 +64,5 @@ package-lock.json
 *.un~
 
 renderer/index.html
+
+reports/

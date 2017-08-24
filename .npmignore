@@ -7,3 +7,4 @@ logs/
 *.sw*
 *.un~
 renderer/index.html
+reports/
