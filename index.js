@@ -65,11 +65,13 @@ app.on('window-all-closed', () => {
   app.quit()
 })
 app.on('ready', () => {
+  opts.reporter = defaultReporter
+
   if (opts.interactive) {
     opts.renderer = true
     opts.debug = true
-    opts.reporter = defaultReporter
   }
+
   if (!opts.renderer) {
     let coverage
     try {
