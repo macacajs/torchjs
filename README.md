@@ -19,6 +19,12 @@ Test framework to light up the world.
 $ npm install torchjs -g
 ```
 
+## Sample
+
+<div align="center">
+  <img src="" />
+</div>
+
 ## Usage
 
 ### Main process
@@ -160,6 +166,8 @@ before_script:
 ## Thanks to
 
 The original idea and most of the code are stolen from [electron-mocha](//github.com/jprichardson/electron-mocha), actually you can say that `torch` is created by adding features onto `electron-mocha`.
+
+[macaca-reporter](//github.com/macacajs/macaca-reporter)
 
 ## License
 
