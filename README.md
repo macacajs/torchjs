@@ -22,8 +22,11 @@ $ npm install torchjs -g
 ## Sample
 
 <div align="center">
-  <img src="" />
+  <img src="http://wx4.sinaimg.cn/large/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif" />
 </div>
+
+- [torchjs test sample](//github.com/macaca-sample/torchjs-sample)
+- [antd components test sample](https://github.com/macaca-sample/antd-sample)
 
 ## Usage
 
@@ -167,7 +170,7 @@ before_script:
 
 The original idea and most of the code are stolen from [electron-mocha](//github.com/jprichardson/electron-mocha), actually you can say that `torch` is created by adding features onto `electron-mocha`.
 
-[macaca-reporter](//github.com/macacajs/macaca-reporter)
+- [macaca-reporter](//github.com/macacajs/macaca-reporter)
 
 ## License
 
