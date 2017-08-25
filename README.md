@@ -21,7 +21,7 @@ $ npm install torchjs -g
 
 ## Sample
 
-![](http://wx4.sinaimg.cn/large/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif)
+[gif demo](http://wx4.sinaimg.cn/large/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif)
 
 - [torchjs test sample](//github.com/macaca-sample/torchjs-sample)
 - [antd components test sample](https://github.com/macaca-sample/antd-sample)
