@@ -32,6 +32,8 @@ const parseArgs = require('./lib/parseArgs')
 const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
 const macacaReporterDir = dirname(macacaReporter)
 
+const pkg = require('./package')
+
 function fail (error) {
   console.error(error.message)
   console.error(error.stack)
@@ -194,6 +196,7 @@ app.on('ready', () => {
       return html
     }
     const output = Render(readFileSync(templatefile, 'utf8'), {
+      title: pkg.name,
       injectcss: `<link rel="stylesheet" href="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.css`)}"/>`,
       injectjs: `<script src="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.js`)}"></script>`,
       preload: getInjectContent(opts.preload)
