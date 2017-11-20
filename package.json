@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "0.3.5",
+  "version": "1.0.2",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,8 @@
     "lint": "standard",
     "lint-fix": "standard --fix",
     "test": "node bin/torch test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
-    "test-live": "node bin/torch --compile --interactive test/renderer"
+    "test-live": "node bin/torch --compile --interactive test/renderer",
+    "ci": "npm run lint && npm run test"
   },
   "pre-commit": {
     "run": [
@@ -46,7 +47,6 @@
     "glob": "^7.1.2",
     "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
-    "macaca-reporter": "^1.0.17",
     "macaca-utils": "^1.0.0",
     "microtemplate": "^1.0.2",
     "minimatch": "^3.0.4",
@@ -58,6 +58,7 @@
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
+    "microtemplate": "^1.0.2",
     "pre-commit": "^1.2.2",
     "standard": "^10.0.2"
   }
