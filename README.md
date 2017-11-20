@@ -15,7 +15,7 @@ Test framework to light up the world.
 
 ## Installation
 
-``` bash
+```bash
 $ npm install torchjs -g
 ```
 
@@ -30,7 +30,7 @@ $ npm install torchjs -g
 
 ### Main process
 
-``` bash
+```bash
 $ torch test/main
 ```
 
@@ -42,25 +42,25 @@ $ torch --renderer test/renderer
 
 ### Interactive mode (you can re-run tests by CMD+R)
 
-``` bash
+```bash
 $ torch --interative test/renderer
 ```
 
 > watching source files
 
-``` bash
+```bash
 $ torch --interactive --watch test/renderer
 ```
 
 ### View code coverage
 
-``` bash
+```bash
 $ torch --coverage test/main && torch-coverage
 ```
 
 ### + Overalls
 
-``` bash
+```bash
 $ torch --coverage test/main && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 ```
 
@@ -68,19 +68,19 @@ $ torch --coverage test/main && cat ./coverage/lcov.info | ./node_modules/covera
 
 > interactive mode
 
-``` bash
+```bash
 $ torch --interactive --watch --source-pattern src/**/*.js test/renderer
 ```
 
 > code coverage
 
-``` bash
+```bash
 $ torch --coverage --source-pattern src/**/*.js test/main && torch-coverage
 ```
 
 ## Options
 
-``` bash
+```bash
 $ torch --help
 
   Usage: torch [options]
@@ -131,7 +131,7 @@ $ torch --help
 
 specify a js file providing compile options. default path is `${process.cwd()}/.torch.compile.opts.js`
 
-``` javascript
+```javascript
 module.exports = {
   babelrc: { // babelrc
     presets: [
@@ -159,7 +159,7 @@ module.exports = {
 
 Your .travis.yml will need two extra lines of configuration to run this headless on Travis:
 
-``` yaml
+```yaml
 before_script:
   - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start
 ```
