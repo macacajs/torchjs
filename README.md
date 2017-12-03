@@ -36,7 +36,7 @@ $ torch test/main
 
 ### Renderer process
 
-``` bash
+```bash
 $ torch --renderer test/renderer
 ```
 
