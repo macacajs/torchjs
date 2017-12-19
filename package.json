@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "0.3.5",
+  "version": "1.0.0",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -46,9 +46,7 @@
     "glob": "^7.1.2",
     "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
-    "macaca-reporter": "^1.0.17",
     "macaca-utils": "^1.0.0",
-    "microtemplate": "^1.0.2",
     "minimatch": "^3.0.4",
     "mocha": "^3.4.2",
     "node-notifier": "^5.1.2",
