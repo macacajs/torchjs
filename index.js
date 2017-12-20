@@ -1,5 +1,7 @@
 const getOptions = require('mocha/bin/options')
+const mochaPath = require.resolve('mocha')
 const url = require('url')
+const path = require('path')
 const {
   assign,
   debounce,
@@ -173,6 +175,9 @@ app.on('ready', () => {
 
     const templatefile = join(__dirname, 'renderer', 'template.html')
     const distfile = join(__dirname, 'renderer', 'index.html')
+
+    // default inject mocha.css
+    opts.preload.push(path.join(mochaPath, '..', 'mocha.css'))
 
     const getInjectContent = list => {
       let html = ''
