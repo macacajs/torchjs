@@ -1,12 +1,12 @@
-const getOptions = require('mocha/bin/options')
-const mochaPath = require.resolve('mocha')
 const url = require('url')
-const path = require('path')
+const address = require('address')
+const getOptions = require('mocha/bin/options')
 const {
   assign,
   debounce,
   each,
-  union
+  union,
+  detectPort
 } = require('macaca-utils')
 const {
   resolve,
@@ -17,6 +17,10 @@ const {
   readFileSync,
   writeFileSync
 } = require('fs')
+const http = require('http')
+const serveStatic = require('serve-static')
+const finalhandler = require('finalhandler')
+
 const {
   BrowserWindow,
   app,
@@ -45,11 +49,12 @@ getOptions()
 const opts = parseArgs(process.argv)
 opts.root = process.cwd()
 
+const isHttp = opts.http
 // `--require-main` scripts
 if (opts.requireMain.length) {
   try {
     each(opts.requireMain, mainModule => {
-      require(mainModule)
+      require(resolve(process.cwd(), mainModule))
     })
   } catch (error) {
     fail(error)
@@ -173,11 +178,12 @@ app.on('ready', () => {
       }
     })
 
-    const templatefile = join(__dirname, 'renderer', 'template.html')
-    const distfile = join(__dirname, 'renderer', 'index.html')
+    const renderDir = join(__dirname, 'renderer')
+    const distfile = join(renderDir, 'index.html')
+    const templatefile = join(renderDir, 'template.html')
 
     // default inject mocha.css
-    opts.preload.push(path.join(mochaPath, '..', 'mocha.css'))
+    opts.preload.push(join('mocha.css'))
 
     const getInjectContent = list => {
       let html = ''
@@ -197,21 +203,55 @@ app.on('ready', () => {
     }
     const output = Render(readFileSync(templatefile, 'utf8'), {
       title: pkg.name,
-      preload: getInjectContent(opts.preload)
+      preload: getInjectContent(opts.preload),
+      runner: `
+        <script>
+          require('${join(renderDir, 'run.js')}')
+        </script>
+      `
     }, {
       tagOpen: '<!--',
       tagClose: '-->'
     })
     writeFileSync(distfile, output, 'utf8')
-    win.loadURL(url.format({
-      hash: encodeURIComponent(JSON.stringify(opts)),
-      pathname: distfile,
-      protocol: 'file:',
-      slashes: true
-    }))
 
     if (!opts.debug && process.platform === 'darwin') {
       app.dock.hide()
+    }
+
+    if (isHttp) {
+      const serve = serveStatic(renderDir, {
+        index: [
+          'index.html'
+        ]
+      })
+      const server = http.createServer((req, res) => {
+        serve(req, res, finalhandler(req, res))
+      })
+
+      // Listen
+      detectPort((err, port) => {
+        if (err) {
+          console.log(err)
+          return
+        }
+        server.listen(port)
+
+        win.loadURL(url.format({
+          hash: encodeURIComponent(JSON.stringify(opts)),
+          pathname: '/',
+          port: port,
+          hostname: address.ip(),
+          protocol: 'http'
+        }))
+      })
+    } else {
+      win.loadURL(url.format({
+        hash: encodeURIComponent(JSON.stringify(opts)),
+        pathname: distfile,
+        protocol: 'file:',
+        slashes: true
+      }))
     }
   }
 })
