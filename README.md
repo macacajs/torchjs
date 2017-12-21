@@ -24,7 +24,6 @@ $ npm install torchjs -g
 [gif demo](http://wx4.sinaimg.cn/large/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif)
 
 - [G2: The Grammar of Graphics in JavaScript](//github.com/antvis/g2)
-- [torchjs test sample](//github.com/macaca-sample/torchjs-sample)
 
 ## Usage
 
