@@ -123,6 +123,7 @@ $ torch --help
     --source-pattern <sources>              glob pattern of source files
     --watch                                 watching source file changes
     --watch-aggregate-timeout               delay time for re-run test cases after files changed
+    --http                                  switch it http protocol runtime
 ```
 
 ### --compile-opts <path>
