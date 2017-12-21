@@ -24,7 +24,10 @@ if (window.location.hash) {
   opts = JSON.parse(decodeURIComponent(hash))
 }
 
-if (!opts.interactive) {
+if (opts.interactive) {
+  const pkg = require('../package')
+  console.log(`${pkg.name}(${pkg.version}) run with protocol '${window.location.protocol}'`)
+} else {
   require('./console')
 }
 
@@ -86,6 +89,10 @@ window.Macaca = {
     })
     ipcRenderer.send('screenshot-start', options)
   }
+}
+
+if (opts.interactive) {
+  console.log('global utils', window.Macaca)
 }
 
 ipcRenderer.on('screenshot-end', (e, data) => {
