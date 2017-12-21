@@ -12,6 +12,7 @@ const {
 const {
   ipcRenderer
 } = require('electron')
+require('electron-cookies')
 const notify = require('../lib/notify')
 const Coverage = require('../lib/Coverage')
 const runMocha = require('../lib/runMocha')

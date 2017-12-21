@@ -1,5 +1,7 @@
 const getOptions = require('mocha/bin/options')
+const mochaPath = require.resolve('mocha')
 const url = require('url')
+const path = require('path')
 const {
   assign,
   debounce,
@@ -9,8 +11,7 @@ const {
 const {
   resolve,
   join,
-  extname,
-  dirname
+  extname
 } = require('path')
 const {
   readFileSync,
@@ -22,15 +23,12 @@ const {
   ipcMain
 } = require('electron')
 const Render = require('microtemplate').render
-const defaultReporter = 'macaca-reporter'
-const macacaReporter = require.resolve(defaultReporter)
 const watch = require('./lib/watch')
 const notify = require('./lib/notify')
 const runMocha = require('./lib/runMocha')
 const Coverage = require('./lib/Coverage')
 const parseArgs = require('./lib/parseArgs')
 const windowBoundsConfig = require('./lib/windowBoundsConfig')(resolve(app.getPath('userData'), './torch-config.json'))
-const macacaReporterDir = dirname(macacaReporter)
 
 const pkg = require('./package')
 
@@ -67,11 +65,10 @@ app.on('window-all-closed', () => {
   app.quit()
 })
 app.on('ready', () => {
-  opts.reporter = defaultReporter
-
   if (opts.interactive) {
     opts.renderer = true
     opts.debug = true
+    opts.reporter = 'HTML'
   }
 
   if (!opts.renderer) {
@@ -179,6 +176,9 @@ app.on('ready', () => {
     const templatefile = join(__dirname, 'renderer', 'template.html')
     const distfile = join(__dirname, 'renderer', 'index.html')
 
+    // default inject mocha.css
+    opts.preload.push(path.join(mochaPath, '..', 'mocha.css'))
+
     const getInjectContent = list => {
       let html = ''
       list.forEach(item => {
@@ -197,8 +197,6 @@ app.on('ready', () => {
     }
     const output = Render(readFileSync(templatefile, 'utf8'), {
       title: pkg.name,
-      injectcss: `<link rel="stylesheet" href="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.css`)}"/>`,
-      injectjs: `<script src="${join(macacaReporterDir, '..', 'dist', `${defaultReporter}.js`)}"></script>`,
       preload: getInjectContent(opts.preload)
     }, {
       tagOpen: '<!--',
