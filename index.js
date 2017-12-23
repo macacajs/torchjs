@@ -1,12 +1,12 @@
 const url = require('url')
-const address = require('address')
 const getOptions = require('mocha/bin/options')
 const {
   assign,
   debounce,
   each,
   union,
-  detectPort
+  detectPort,
+  ipv4
 } = require('macaca-utils')
 const {
   resolve,
@@ -241,7 +241,7 @@ app.on('ready', () => {
           hash: encodeURIComponent(JSON.stringify(opts)),
           pathname: '/',
           port: port,
-          hostname: address.ip(),
+          hostname: ipv4,
           protocol: 'http'
         }))
       })
