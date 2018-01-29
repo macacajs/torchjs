@@ -7,7 +7,9 @@ describe('--dom-global-loose', () => {
   })
   it('window properties can be modified in loose mode', () => {
     assert.doesNotThrow(() => {
-      window.navigator = 123
+      window.navigator = {
+        userAgent: 'x'
+      }
     })
   })
 })

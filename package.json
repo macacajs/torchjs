@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "node bin/torch --dom-global-loose test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
+    "test": "node bin/torch --dom-global test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
     "test-live": "node bin/torch --compile --interactive test/renderer",
     "ci": "npm run lint && npm run test"
   },
