@@ -14,7 +14,6 @@ const {
 } = require('electron')
 require('electron-cookies')
 const notify = require('../lib/notify')
-const Coverage = require('../lib/Coverage')
 const runMocha = require('../lib/runMocha')
 
 let opts = {}
@@ -31,10 +30,13 @@ if (opts.interactive) {
   require('./console')
 }
 
+/*
+// TODO clean up old logic
 let coverage
 if (opts.coverage) {
   coverage = new Coverage(opts.root, opts.sourcePattern)
 }
+*/
 
 // Expose mocha
 window.mocha = mocha
@@ -65,9 +67,12 @@ ipcRenderer.on('mocha-start', () => {
       if (count && opts.notifyOnFail) {
         notify(count)
       }
+      /*
+       // TODO clean up old logic
       if (coverage) {
         coverage.report()
       }
+      */
       ipcRenderer.send('mocha-done', count)
     })
   } catch (error) {
