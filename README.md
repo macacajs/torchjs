@@ -177,11 +177,11 @@ The original idea and most of the code are stolen from [electron-mocha](//github
 
 ## Contributors
 
-|[<img src="https://avatars1.githubusercontent.com/u/1655789?v=4" width="100px;"/><br/><sub><b>leungwensen</b></sub>](https://github.com/leungwensen)<br/>|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars1.githubusercontent.com/u/11460601?v=4" width="100px;"/><br/><sub><b>zivyll</b></sub>](https://github.com/zivyll)<br/>
+|[<img src="https://avatars1.githubusercontent.com/u/1011681?v=4" width="100px;"/><br/><sub><b>xudafeng</b></sub>](https://github.com/xudafeng)<br/>|[<img src="https://avatars1.githubusercontent.com/u/1655789?v=4" width="100px;"/><br/><sub><b>leungwensen</b></sub>](https://github.com/leungwensen)<br/>|[<img src="https://avatars1.githubusercontent.com/u/11460601?v=4" width="100px;"/><br/><sub><b>zivyll</b></sub>](https://github.com/zivyll)<br/>
 | :---: | :---: | :---: |
 
 
-This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor.git), auto upated at `Sun Mar 25 2018 15:49:08 GMT+0800`.
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto upated at `Sat Apr 21 2018 20:32:08 GMT+0800`.
 
 <!-- GITCONTRIBUTOR_END -->
 
