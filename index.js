@@ -178,9 +178,9 @@ app.on('ready', () => {
       }
     })
 
-    const renderDir = join(__dirname, 'renderer')
-    const distfile = join(renderDir, 'index.html')
-    const templatefile = join(renderDir, 'template.html')
+    const renderDir = join(__dirname, './renderer')
+    const distfile = join(renderDir, './index.html')
+    const templatefile = join(renderDir, './template.html')
 
     // default inject mocha.css
     opts.preload.push(join('mocha.css'))
@@ -206,7 +206,7 @@ app.on('ready', () => {
       preload: getInjectContent(opts.preload),
       runner: `
         <script>
-          require('${join(renderDir, 'run.js')}')
+          require('./run.js')
         </script>
       `
     }, {
