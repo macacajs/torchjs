@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
