@@ -163,14 +163,16 @@ app.on('ready', () => {
           height: options.height
         }
         win.capturePage(config, image => {
-          let base64 = image.toPng().toString('base64')
+          let data = image.toDataURL()
+          let base64 = data.split(',')[1]
           win.webContents.send('screenshot-end', {
             base64
           })
         })
       } else {
         win.capturePage(image => {
-          let base64 = image.toPng().toString('base64')
+          let data = image.toDataURL()
+          let base64 = data.split(',')[1]
           win.webContents.send('screenshot-end', {
             base64
           })
