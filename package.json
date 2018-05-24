@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -45,7 +45,7 @@
     "babel-register": "~6.26.0",
     "chokidar": "~2.0.3",
     "commander": "~2.15.1",
-    "electron": "~2.0.2",
+    "electron": "~1.8.7",
     "electron-cookies": "~1.1.0",
     "finalhandler": "~1.1.1",
     "glob": "~7.1.2",
