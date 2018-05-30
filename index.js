@@ -204,11 +204,8 @@ app.on('ready', () => {
     const output = Render(readFileSync(templatefile, 'utf8'), {
       title: pkg.name,
       preload: getInjectContent(opts.preload),
-      runner: `
-        <script>
-          require('./run.js')
-        </script>
-      `
+      // runner: `<script src="${join(renderDir, 'run.js')}"></script>`
+      runner: `<script>require('${join(renderDir, 'run.js').replace(/\\/g, '/')}');</script>` // NOTE: to make module loading work in windows
     }, {
       tagOpen: '<!--',
       tagClose: '-->'

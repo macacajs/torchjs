@@ -10,8 +10,12 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "node bin/torch --dom-global test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
+    "test": "npm run test-main && npm run test-renderer && npm run test-http",
+    "test-main": "node bin/torch --compile --dom-global test/main",
+    "test-renderer": "node bin/torch --compile --renderer --notify-on-fail test/renderer",
     "test-live": "node bin/torch --compile --interactive test/renderer",
+    "test-http": "node bin/torch --dom-global --compile --http test/main",
+    "test-http-live": "node bin/torch --compile --http --interactive test/renderer",
     "ci": "npm run lint && npm run test",
     "contributor": "git-contributor"
   },
