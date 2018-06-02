@@ -10,6 +10,9 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
+    "coverage": "npm run coverage-generator && npm run coverage-viewer",
+    "coverage-generator": "node bin/torch --compile --coverage --renderer --recursive test/renderer",
+    "coverage-viewer": "node bin/coverage",
     "test": "npm run test-main && npm run test-renderer && npm run test-http",
     "test-main": "node bin/torch --compile --dom-global test/main",
     "test-renderer": "node bin/torch --compile --renderer --notify-on-fail test/renderer",
