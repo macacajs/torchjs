@@ -1,6 +1,5 @@
 .travis.yml
 test/
-Makefile
 coverage/
 docs/
 logs/

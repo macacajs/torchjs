@@ -20,7 +20,14 @@
     "test-http": "node bin/torch --dom-global --compile --http test/main",
     "test-http-live": "node bin/torch --compile --http --interactive test/renderer",
     "ci": "npm run lint && npm run test",
-    "contributor": "git-contributor"
+    "contributor": "git-contributor",
+    "docs:dev": "vuepress dev docs_src",
+    "docs:build": "vuepress build docs_src"
+  },
+  "standard": {
+    "ignore": [
+      "/docs"
+    ]
   },
   "pre-commit": {
     "run": [
@@ -74,6 +81,7 @@
     "@babel/preset-env": "^7.0.0",
     "git-contributor": "~1.0.8",
     "pre-commit": "~1.2.2",
-    "standard": "~11.0.1"
+    "standard": "~11.0.1",
+    "vuepress": "^0.14.8"
   }
 }
