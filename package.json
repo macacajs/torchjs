@@ -19,7 +19,6 @@
     "test-live": "node bin/torch --compile --interactive test/renderer",
     "test-http": "node bin/torch --dom-global --compile --http test/main",
     "test-http-live": "node bin/torch --compile --http --interactive test/renderer",
-    "ci": "npm run lint && npm run test",
     "contributor": "git-contributor",
     "docs:dev": "vuepress dev docs_src",
     "docs:build": "vuepress build docs_src"
