@@ -79,6 +79,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "git-contributor": "~1.0.8",
+    "macaca-ecosystem": "*",
     "pre-commit": "~1.2.2",
     "standard": "~11.0.1",
     "vuepress": "^0.14.8"
