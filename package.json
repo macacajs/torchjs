@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -19,8 +19,14 @@
     "test-live": "node bin/torch --compile --interactive test/renderer",
     "test-http": "node bin/torch --dom-global --compile --http test/main",
     "test-http-live": "node bin/torch --compile --http --interactive test/renderer",
-    "ci": "npm run lint && npm run test",
-    "contributor": "git-contributor"
+    "contributor": "git-contributor",
+    "docs:dev": "vuepress dev docs_src",
+    "docs:build": "vuepress build docs_src"
+  },
+  "standard": {
+    "ignore": [
+      "/docs"
+    ]
   },
   "pre-commit": {
     "run": [
@@ -47,9 +53,9 @@
   },
   "homepage": "https://github.com/macacajs/torchjs#readme",
   "dependencies": {
-    "babel-core": "~6.26.0",
+    "@babel/core": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "babel-plugin-istanbul": "~4.1.6",
-    "babel-register": "~6.26.0",
     "chokidar": "~2.0.3",
     "commander": "~2.15.1",
     "electron": "~2.0.2",
@@ -70,9 +76,11 @@
     "which": "~1.2.14"
   },
   "devDependencies": {
-    "babel-preset-env": "~1.7.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "git-contributor": "~1.0.8",
     "pre-commit": "~1.2.2",
-    "standard": "~11.0.1"
+    "standard": "~11.0.1",
+    "vuepress": "^0.14.8"
   }
 }
