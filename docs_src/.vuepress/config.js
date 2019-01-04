@@ -15,10 +15,11 @@ module.exports = {
     '/zh/': {
       lang: 'zh-CN',
       title: 'Torchjs',
-      description: 'Test framework to light up the world.',
+      description: '点亮世界的测试框架。',
     },
   },
   head: [
+    ['link', { rel: 'icon', href: 'logo/favicon.ico' }],
     ['script', {
       async: true,
       src: 'https://www.googletagmanager.com/gtag/js?id=UA-49226133-2',
@@ -54,8 +55,8 @@ module.exports = {
           },
         ],
         sidebar: {
-          '/guide/': genSidebarConfig('Guide')
-        }
+          '/guide/': genSidebarConfig('Guide', 'Usage', 'Advanced'),
+        },
       },
       '/zh/': {
         label: '简体中文',
@@ -75,20 +76,23 @@ module.exports = {
           },
         ],
         sidebar: {
-          '/zh/guide/': genSidebarConfig('指南')
-        }
+          '/zh/guide/': genSidebarConfig('指南'),
+        },
       },
     },
   },
 };
 
-function genSidebarConfig(title) {
+function genSidebarConfig(guide) {
   return [
     {
-      title,
+      title: guide,
       collapsable: false,
       children: [
         'install',
+        'usage',
+        'options',
+        'advanced',
       ],
     },
   ];
