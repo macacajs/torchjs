@@ -1,5 +1,7 @@
 'use strict';
 
+const macacaEcosystem = require('macaca-ecosystem');
+
 const name = 'torchjs';
 
 module.exports = {
@@ -29,6 +31,11 @@ module.exports = {
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-49226133-2');
+    `],
+    ['style', {}, `
+      img: {
+        width: 100%;
+      }
     `]
   ],
   serviceWorker: true,
@@ -53,6 +60,7 @@ module.exports = {
             text: 'Guide',
             link: '/guide/install.html'
           },
+          macacaEcosystem.en,
         ],
         sidebar: {
           '/guide/': genSidebarConfig('Guide', 'Usage', 'Advanced'),
@@ -74,6 +82,7 @@ module.exports = {
             text: '指南',
             link: '/zh/guide/install.html'
           },
+          macacaEcosystem.zh,
         ],
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南'),
