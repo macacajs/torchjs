@@ -30,6 +30,11 @@ module.exports = {
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-49226133-2');
+    `],
+    ['style', {}, `
+      img: {
+        width: 100%;
+      }
     `]
   ],
   serviceWorker: true,

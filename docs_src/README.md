@@ -9,9 +9,15 @@ footer: MIT Licensed | Copyright © 2015-present Macaca
 
 ---
 
-## Fast start
+## Quick start
 
 ```bash
 # install
 $ npm i torchjs --save
 ```
+
+::: tip
+Use with Macaca Reporter.
+:::
+
+![](http://wx4.sinaimg.cn/large/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif)
