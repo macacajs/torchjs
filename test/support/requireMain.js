@@ -1,1 +1,1 @@
-global.requiredMain = true
+global.requiredMain = true;

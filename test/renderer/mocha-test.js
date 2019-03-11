@@ -1,11 +1,10 @@
-/* eslint-env mocha */
-import mocha from 'mocha'
+import mocha from 'mocha';
 import {
   strictEqual
-} from 'assert'
+} from 'assert';
 
 describe('mocha', () => {
   it('is exposed as global', () => {
-    strictEqual(window.mocha, mocha)
-  })
-})
+    strictEqual(window.mocha, mocha);
+  });
+});

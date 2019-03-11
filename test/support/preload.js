@@ -1,1 +1,1 @@
-window.preloaded = true
+window.preloaded = true;

@@ -1,1 +1,1 @@
-global.required = true
+global.required = true;
