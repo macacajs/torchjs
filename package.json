@@ -8,8 +8,7 @@
     "torch": "./bin/torch.js"
   },
   "scripts": {
-    "lint": "standard",
-    "lint-fix": "standard --fix",
+    "lint": "standard --fix",
     "coverage": "npm run coverage-generator && npm run coverage-viewer",
     "coverage-generator": "node bin/torch --compile --coverage --renderer --recursive test/renderer",
     "coverage-viewer": "node bin/coverage",
@@ -29,12 +28,10 @@
       "/docs_dist"
     ]
   },
-  "pre-commit": {
-    "run": [
-      "lint",
-      "test"
-    ],
-    "silent": false
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "repository": {
     "type": "git",
@@ -80,8 +77,8 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "git-contributor": "~1.0.8",
+    "husky": "^1.3.1",
     "macaca-ecosystem": "*",
-    "pre-commit": "~1.2.2",
     "standard": "~11.0.1",
     "vuepress": "^0.14.8"
   }
