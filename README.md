@@ -1,11 +1,17 @@
 # Torch
 
-[![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] [![npm download][download-image]][download-url] [![babel version][babel-image]][babel-url]
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![npm download][download-image]][download-url]
+[![babel version][babel-image]][babel-url]
 
 [npm-image]: https://img.shields.io/npm/v/torchjs.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/torchjs
 [travis-image]: https://img.shields.io/travis/macacajs/torchjs.svg?style=flat-square
 [travis-url]: https://travis-ci.org/macacajs/torchjs
+[coveralls-image]: https://img.shields.io/coveralls/macacajs/torchjs.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/macacajs/torchjs?branch=master
 [download-image]: https://img.shields.io/npm/dm/torchjs.svg?style=flat-square
 [download-url]: https://npmjs.org/package/torchjs
 [babel-image]: https://img.shields.io/badge/babel-7-green.svg?style=flat-square
