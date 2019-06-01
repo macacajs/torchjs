@@ -20,4 +20,4 @@ $ npm i torchjs -g
 与 Macaca Reporter 配合使用。
 :::
 
-![](http://wx4.sinaimg.cn/large/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif)
+![](/torchjs/assets/6d308bd9gy1fiw8er0a5eg20zc0k0he0.gif)
