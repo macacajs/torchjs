@@ -2,7 +2,7 @@
 
 ## Requirements
 
-To install macaca-datahub, [Node.js](https://nodejs.org) environment is required.
+To install macaca-torchjs, [Node.js](https://nodejs.org) environment is required.
 
 ## Installation
 
