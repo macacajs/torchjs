@@ -12,7 +12,7 @@ const {
 const {
   ipcRenderer
 } = require('electron');
-require('electron-cookies');
+require('electron-cookies-alt');
 const notify = require('../lib/notify');
 const Coverage = require('../lib/Coverage');
 const runMocha = require('../lib/runMocha');

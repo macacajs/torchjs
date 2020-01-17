@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "2.2.1",
+  "version": "3.0.1",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -32,11 +32,11 @@
   "keywords": [
     "torch",
     "electron",
+    "macaca",
     "mocha",
     "test",
     "framework"
   ],
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/macacajs/torchjs/issues"
@@ -48,8 +48,8 @@
     "babel-plugin-istanbul": "~4.1.6",
     "chokidar": "~2.0.3",
     "commander": "~2.15.1",
-    "electron": "~2.0.2",
-    "electron-cookies": "~1.1.0",
+    "electron": "^7.1.9",
+    "electron-cookies-alt": "2",
     "finalhandler": "~1.1.1",
     "glob": "~7.1.2",
     "is-electron-renderer": "~2.0.1",
@@ -70,7 +70,7 @@
     "@babel/preset-env": "^7.0.0",
     "eslint": "^4.19.1",
     "eslint-plugin-mocha": "^5.0.0",
-    "git-contributor": "~1.0.8",
+    "git-contributor": "1",
     "husky": "^1.3.1",
     "macaca-ecosystem": "*",
     "vuepress": "^0.14.8"

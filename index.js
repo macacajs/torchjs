@@ -108,7 +108,11 @@ app.on('ready', () => {
       show: false,
       width: opts.width,
       webPreferences: {
-        webSecurity: false
+        nodeIntegration: true,
+        webSecurity: false,
+        allowRunningInsecureContent: true,
+        allowDisplayingInsecureContent: true,
+        backgroundThrottling: false
       }
     };
     assign(winOpts, windowBoundsConfig.get('main'));
@@ -162,7 +166,7 @@ app.on('ready', () => {
           width: options.width,
           height: options.height
         };
-        win.capturePage(config, image => {
+        win.capturePage(config).then(image => {
           let data = image.toDataURL();
           let base64 = data.split(',')[1];
           win.webContents.send('screenshot-end', {
@@ -170,7 +174,7 @@ app.on('ready', () => {
           });
         });
       } else {
-        win.capturePage(image => {
+        win.capturePage().then(image => {
           let data = image.toDataURL();
           let base64 = data.split(',')[1];
           win.webContents.send('screenshot-end', {
@@ -236,7 +240,7 @@ app.on('ready', () => {
         }
         server.listen(port);
 
-        win.loadURL(url.format({
+        win.webContents.loadURL(url.format({
           hash: encodeURIComponent(JSON.stringify(opts)),
           pathname: '/',
           port: port,
@@ -245,7 +249,7 @@ app.on('ready', () => {
         }));
       });
     } else {
-      win.loadURL(url.format({
+      win.webContents.loadURL(url.format({
         hash: encodeURIComponent(JSON.stringify(opts)),
         pathname: distfile,
         protocol: 'file:',

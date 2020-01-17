@@ -3,7 +3,9 @@ test/
 coverage/
 docs_dist/
 logs/
+docs/
 *.sw*
 *.un~
 renderer/index.html
 reports/
+renderer/index.html
