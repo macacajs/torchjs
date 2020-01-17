@@ -5,6 +5,7 @@
 [![Test coverage][coveralls-image]][coveralls-url]
 [![npm download][download-image]][download-url]
 [![babel version][babel-image]][babel-url]
+[![electron version][electron-image]][electron-url]
 
 [npm-image]: https://img.shields.io/npm/v/torchjs.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/torchjs
@@ -16,6 +17,8 @@
 [download-url]: https://npmjs.org/package/torchjs
 [babel-image]: https://img.shields.io/badge/babel-7-green.svg?style=flat-square
 [babel-url]: https://vuejs.org/
+[electron-image]: https://img.shields.io/badge/electron-7-green.svg?style=flat-square
+[electron-url]: https://electronjs.org/
 
 ---
 
