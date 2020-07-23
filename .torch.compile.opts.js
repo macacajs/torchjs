@@ -10,7 +10,6 @@ module.exports = {
     'test/renderer/**',
   ],
   exclude: [
-    'bower_components/**',
     'node_modules/**'
   ]
 }
