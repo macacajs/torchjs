@@ -15,9 +15,9 @@
 [coveralls-url]: https://coveralls.io/r/macacajs/torchjs?branch=master
 [download-image]: https://img.shields.io/npm/dm/torchjs.svg?style=flat-square
 [download-url]: https://npmjs.org/package/torchjs
-[babel-image]: https://img.shields.io/badge/babel-9-green.svg?style=flat-square
+[babel-image]: https://img.shields.io/badge/babel-7-green.svg?style=flat-square
 [babel-url]: https://github.com/babel/babel
-[electron-image]: https://img.shields.io/badge/electron-7-green.svg?style=flat-square
+[electron-image]: https://img.shields.io/badge/electron-9-green.svg?style=flat-square
 [electron-url]: https://electronjs.org/
 
 ---
