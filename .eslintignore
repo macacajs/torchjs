@@ -1,4 +1,4 @@
 **/.*
 **/node_modules
-**/coverage/
-**/docs_dist/
+**/coverage
+**/docs_dist

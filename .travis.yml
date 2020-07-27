@@ -8,8 +8,9 @@ addons:
 install:
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
-  - npm i vuepress macaca-ecosystem
-  - npm run docs:build
+  - npm i macaca-ecosystem
+  - npm i vuepress -g
+  - vuepress build docs
 script:
   - npm i
   - $(npm bin)/macaca-ecosystem push --cwd ./docs_dist --branch gh-pages
