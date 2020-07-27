@@ -66,13 +66,12 @@
     "which": "~1.2.14"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "eslint": "^4.19.1",
     "eslint-plugin-mocha": "^5.0.0",
     "git-contributor": "1",
     "husky": "1",
     "macaca-ecosystem": "*",
-    "vuepress": "^0.14.8"
+    "vuepress": "^1.5.2"
   }
 }
