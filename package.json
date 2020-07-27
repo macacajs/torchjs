@@ -17,8 +17,7 @@
     "test-http": "node bin/torch --dom-global --compile --http test/main",
     "test-http-live": "node bin/torch --compile --http --interactive test/renderer",
     "contributor": "git-contributor",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "vuepress dev docs"
   },
   "husky": {
     "hooks": {
