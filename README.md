@@ -17,7 +17,7 @@
 [download-url]: https://npmjs.org/package/torchjs
 [babel-image]: https://img.shields.io/badge/babel-7-green.svg?style=flat-square
 [babel-url]: https://github.com/babel/babel
-[electron-image]: https://img.shields.io/badge/electron-9-green.svg?style=flat-square
+[electron-image]: https://img.shields.io/badge/electron-11-green.svg?style=flat-square
 [electron-url]: https://electronjs.org/
 
 ---

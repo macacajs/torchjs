@@ -108,6 +108,8 @@ app.on('ready', () => {
       show: false,
       width: opts.width,
       webPreferences: {
+        enableRemoteModule: true,
+        contextIsolation: false,
         nodeIntegration: true,
         webSecurity: false,
         allowRunningInsecureContent: true,
