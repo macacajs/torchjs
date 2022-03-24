@@ -7,17 +7,17 @@
 [![babel version][babel-image]][babel-url]
 [![electron version][electron-image]][electron-url]
 
-[npm-image]: https://img.shields.io/npm/v/torchjs.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/torchjs.svg
 [npm-url]: https://npmjs.org/package/torchjs
-[travis-image]: https://img.shields.io/travis/macacajs/torchjs.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/macacajs/torchjs.svg
 [travis-url]: https://travis-ci.org/macacajs/torchjs
-[coveralls-image]: https://img.shields.io/coveralls/macacajs/torchjs.svg?style=flat-square
+[coveralls-image]: https://img.shields.io/coveralls/macacajs/torchjs.svg
 [coveralls-url]: https://coveralls.io/r/macacajs/torchjs?branch=master
-[download-image]: https://img.shields.io/npm/dm/torchjs.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/torchjs.svg
 [download-url]: https://npmjs.org/package/torchjs
-[babel-image]: https://img.shields.io/badge/babel-7-green.svg?style=flat-square
+[babel-image]: https://img.shields.io/badge/babel-7-green.svg
 [babel-url]: https://github.com/babel/babel
-[electron-image]: https://img.shields.io/badge/electron-11-green.svg?style=flat-square
+[electron-image]: https://img.shields.io/badge/electron-11-green.svg
 [electron-url]: https://electronjs.org/
 
 ---
