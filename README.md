@@ -1,7 +1,7 @@
 # Torch
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![CI][CI-image]][CI-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![npm download][download-image]][download-url]
 [![babel version][babel-image]][babel-url]
@@ -9,8 +9,8 @@
 
 [npm-image]: https://img.shields.io/npm/v/torchjs.svg
 [npm-url]: https://npmjs.org/package/torchjs
-[travis-image]: https://img.shields.io/travis/macacajs/torchjs.svg
-[travis-url]: https://travis-ci.org/macacajs/torchjs
+[CI-image]: https://github.com/macacajs/torchjs/actions/workflows/ci.yml/badge.svg
+[CI-url]: https://github.com/macacajs/torchjs/actions/workflows/ci.yml
 [coveralls-image]: https://img.shields.io/coveralls/macacajs/torchjs.svg
 [coveralls-url]: https://coveralls.io/r/macacajs/torchjs?branch=master
 [download-image]: https://img.shields.io/npm/dm/torchjs.svg
